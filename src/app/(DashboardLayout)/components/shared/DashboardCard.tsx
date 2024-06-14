@@ -2,7 +2,7 @@ import React from "react";
 import { Card, CardContent, Typography, Stack, Box } from "@mui/material";
 
 type Props = {
-  title?: string;
+  title?: string | JSX.Element;
   subtitle?: string;
   action?: JSX.Element | any;
   footer?: JSX.Element;
@@ -13,7 +13,7 @@ type Props = {
   middlecontent?: string | JSX.Element;
 };
 
-const DashboardCard = ({
+const DashboardCard: React.FC<Props> = ({
   title,
   subtitle,
   children,
@@ -23,7 +23,7 @@ const DashboardCard = ({
   headtitle,
   headsubtitle,
   middlecontent,
-}: Props) => {
+}) => {
   return (
     <Card sx={{ padding: 0 }} elevation={9} variant={undefined}>
       {cardheading ? (
@@ -40,28 +40,27 @@ const DashboardCard = ({
               direction="row"
               spacing={2}
               justifyContent="space-between"
-              alignItems={"center"}
+              alignItems="center"
               mb={3}
             >
               <Box>
-                {title ? <Typography variant="h5">{title}</Typography> : ""}
-
-                {subtitle ? (
+                {typeof title === "string" ? (
+                  <Typography variant="h5">{title}</Typography>
+                ) : (
+                  title
+                )}
+                {subtitle && (
                   <Typography variant="subtitle2" color="textSecondary">
                     {subtitle}
                   </Typography>
-                ) : (
-                  ""
                 )}
               </Box>
               {action}
             </Stack>
           ) : null}
-
           {children}
         </CardContent>
       )}
-
       {middlecontent}
       {footer}
     </Card>
