@@ -1,13 +1,13 @@
 import React from 'react';
-import { Box, Typography, Container } from '@mui/material';
+import { Box, Typography, Container, Button } from '@mui/material';
 import { Carousel } from 'react-responsive-carousel';
-import 'react-responsive-carousel/lib/styles/carousel.min.css'; // Import carousel styles
+import 'react-responsive-carousel/lib/styles/carousel.min.css'; 
 
 const images = [
-  '/images/product1.jpg', 
-  '/images/product2.jpg',
-  '/images/product3.jpg',
-  '/images/product4.jpg'
+  '/images/backgrounds/img_1.jpg', 
+  '/images/backgrounds/img_2.jpeg',
+  '/images/backgrounds/img_3.png',
+  '/images/backgrounds/img_4.png'
 ];
 
 const HeroCarousel: React.FC = () => {
@@ -18,7 +18,7 @@ const HeroCarousel: React.FC = () => {
         width: '100%',
         height: '300px',
         borderRadius: '16px',
-        overflow: 'hidden', // Ensure the border radius is applied to children
+        overflow: 'hidden', 
       }}
     >
       <Carousel
@@ -57,9 +57,13 @@ const HeroCarousel: React.FC = () => {
           <Typography variant="h2" sx={{ color: 'white', mb: 2 }}>
             Proxy Market
           </Typography>
-          <Typography variant="h6" sx={{ color: 'white' }}>
-            We offer the best online market experience with over 100 million IP Pools.
+          <Typography variant="body1" sx={{ color: 'white', mb: 2 }}>
+            We offer the best online market experience with over 100 million IP Pools.<br/>
+            Choose between rotation or sticky options, all with high-speed connectivity.
           </Typography>
+          <Button variant="contained" color="primary" sx={{ mt: 2 }}>
+            Explore
+          </Button>
         </Container>
       </Box>
     </Box>
